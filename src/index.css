@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hud-bg: #030b14;
+  --color-hud-panel: rgba(6, 22, 36, 0.72);
+  --color-hud-border: rgba(0, 240, 255, 0.12);
+  --color-hud-cyan: #00f0ff;
+  --color-hud-amber: #ffb800;
+  --color-hud-crimson: #ff4560;
+  --color-hud-muted: #6c7a89;
+  --color-hud-grid: #0a2d3f;
+  --font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-family-tech: "Orbitron", "Rajdhani", system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    background-color: var(--color-hud-bg);
+    color: var(--color-hud-cyan);
+    font-family: var(--font-family-mono);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .hud-glow {
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.18), 0 0 40px rgba(0, 240, 255, 0.08);
+  }
+  .hud-glow-amber {
+    box-shadow: 0 0 18px rgba(255, 184, 0, 0.18), 0 0 40px rgba(255, 184, 0, 0.08);
+  }
+  .hud-glow-crimson {
+    box-shadow: 0 0 18px rgba(255, 69, 96, 0.2), 0 0 40px rgba(255, 69, 96, 0.1);
+  }
+  .hud-text-glow {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+  }
+  .hud-text-glow-amber {
+    text-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
+  }
+  .hud-panel {
+    background: var(--color-hud-panel);
+    border: 1px solid var(--color-hud-border);
+    backdrop-filter: blur(14px) saturate(110%);
+  }
+  .hud-chamfer {
+    clip-path: polygon(
+      14px 0,
+      calc(100% - 14px) 0,
+      100% 14px,
+      100% calc(100% - 14px),
+      calc(100% - 14px) 100%,
+      14px 100%,
+      0 calc(100% - 14px),
+      0 14px
+    );
+  }
+  .scanlines {
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 4px 4px, 4px 4px;
+    pointer-events: none;
+  }
+  .hud-ring {
+    transform-origin: 50% 50%;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.6s ease-in-out infinite;
+}

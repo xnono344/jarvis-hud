@@ -1,0 +1,27 @@
+[backend]
+host = "127.0.0.1"
+ws_port = 8765
+http_port = 8766
+ws_path = "/ws"
+# Explicit local Vite development origins; production origins are derived from http_port.
+browser_origins = ["http://127.0.0.1:5173", "http://localhost:5173"]
+
+[telemetry]
+update_interval_ms = 2000
+
+[tools]
+enabled = ["read_file", "write_file", "delete_file", "list_directory", "run_shell_command", "open_application", "kill_process", "system_control", "window_management", "clipboard", "notify", "web_search"]
+
+[plugins]
+enabled = ["spotify", "github", "reddit"]
+
+[skills]
+enabled = ["system_status", "focus_mode", "quick_note", "clean_downloads", "daily_recap"]
+
+[memory]
+file = "backend/memory/memory.json"
+notes_file = "~/notes.txt"
+
+# Explicit executable names only; arguments and shell expressions are rejected.
+[applications]
+allowed = ["firefox", "chromium", "brave", "dolphin", "thunar", "kitty", "foot", "code", "spotify", "obsidian"]

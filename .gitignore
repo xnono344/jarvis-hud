@@ -1,0 +1,41 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+# Secrets — never commit (JARVIS backend keys live in backend/.env)
+.env*
+!.env.example
+!backend/.env.example
+
+# Local Python env
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local assistant state and machine-specific integrations
+backend/memory/memory.json
+.freebuff/
+jarvis.desktop
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
